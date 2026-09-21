@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta name="theme-color" content="#FDFBF7">
+
+    <meta
+        name="description"
+        content="Un pequeño detalle hecho especialmente para Ara."
+    >
+
+    <title>Para mi Arancita 🌻</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        :root {
+            --bg-color: #fdfbf7;
+
+            --text-main: #2c352d;
+            --text-muted: #5a665b;
+
+            --gold-light: #f4d068;
+            --gold-dark: #d4af37;
+
+            --yellow-petal: #ffd700;
+            --orange-petal: #ffa500;
+
+            --green: #688e5a;
+
+            --white-glass: rgba(255, 255, 255, 0.68);
+            --border-glass: rgba(255, 255, 255, 0.85);
+
+            --font-serif: "Playfair Display", serif;
+            --font-sans: "Montserrat", sans-serif;
+
+            --transition-smooth:
+                0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+
+        /* RESET */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            width: 100%;
+            height: 100%;
+
+            background: var(--bg-color);
+        }
+
+        body {
+            width: 100%;
+            min-height: 100dvh;
+
+            font-family: var(--font-sans);
+            color: var(--text-main);
+
+            background-color: var(--bg-color);
+
+            background-image:
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(244, 208, 104, 0.18) 0%,
+                    transparent 62%
+                );
+
+            overflow: hidden;
+        }
+
+        button {
+            font: inherit;
+        }
+
+
+        /* PANTALLAS */
+
+        .screen {
+            position: fixed;
+
+            inset: 0;
+
+            width: 100%;
+            height: 100dvh;
+
+            display: flex;
+            flex-direction: column;
+
+            justify-content: center;
+            align-items: center;
+
+            padding:
+                max(2rem, env(safe-area-inset-top))
+                max(1.5rem, env(safe-area-inset-right))
+                max(2rem, env(safe-area-inset-bottom))
+                max(1.5rem, env(safe-area-inset-left));
+
+            opacity: 1;
+
+            transform: scale(1);
+
+            transition:
+                opacity var(--transition-smooth),
+                transform var(--transition-smooth);
+
+            z-index: 10;
+        }
+
+        .screen.hidden {
+            opacity: 0;
+
+            pointer-events: none;
+
+            transform: scale(0.96);
+        }
+
+
+        /* PANTALLA INICIAL */
+
+        #screen-1 {
+            overflow: hidden;
+        }
+
+        .intro-container {
+            width: 100%;
+            max-width: 430px;
+
+            text-align: center;
+
+            animation:
+                introAppear 1s
+                cubic-bezier(0.25, 1, 0.5, 1)
+                both;
+        }
+
+
+        /* GIRASOL */
+
+        .svg-flower-main {
+            width: clamp(100px, 30vw, 140px);
+            height: clamp(100px, 30vw, 140px);
+
+            margin-bottom: 2rem;
+
+            filter:
+                drop-shadow(
+                    0 10px 16px
+                    rgba(212, 175, 55, 0.22)
+                );
+
+            animation:
+                floatFlower 4s ease-in-out infinite;
+        }
+
+
+        /* TEXTOS */
+
+        .title {
+            font-family: var(--font-serif);
+
+            font-size:
+                clamp(
+                    2.6rem,
+                    10vw,
+                    4rem
+                );
+
+            line-height: 1.05;
+
+            font-weight: 700;
+
+            color: var(--text-main);
+
+            margin-bottom: 1rem;
+
+            letter-spacing: -0.7px;
+        }
+
+        .subtitle {
+            font-size: 0.95rem;
+
+            font-weight: 300;
+
+            color: var(--text-muted);
+
+            line-height: 1.75;
+
+            margin-bottom: 2.4rem;
+        }
+
+
+        /* BOTONES */
+
+        .btn {
+            position: relative;
+
+            border: none;
+
+            min-height: 52px;
+
+            padding:
+                0.95rem
+                2.4rem;
+
+            border-radius: 999px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--gold-light),
+                    var(--gold-dark)
+                );
+
+            color: white;
+
+            font-family: var(--font-sans);
+
+            font-size: 0.9rem;
+
+            font-weight: 500;
+
+            letter-spacing: 0.4px;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 10px 25px
+                rgba(212, 175, 55, 0.28);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease,
+                filter 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 15px 30px
+                rgba(212, 175, 55, 0.36);
+
+            filter: brightness(1.03);
+        }
+
+        .btn:active {
+            transform: scale(0.97);
+        }
+
+        .btn:focus-visible {
+            outline:
+                3px solid
+                rgba(212, 175, 55, 0.35);
+
+            outline-offset: 4px;
+        }
+
+
+        /* PANTALLA DE CARTA */
+
+        #screen-2 {
+            justify-content: flex-start;
+
+            align-items: center;
+
+            padding-top:
+                max(3rem, env(safe-area-inset-top));
+
+            padding-bottom:
+                max(3rem, env(safe-area-inset-bottom));
+
+            overflow-y: auto;
+
+            overscroll-behavior: contain;
+
+            -webkit-overflow-scrolling: touch;
+        }
+
+
+        /* CARTA */
+
+        .letter-card {
+            width: min(100%, 520px);
+
+            margin:
+                1rem
+                0
+                2rem;
+
+            padding:
+                clamp(2rem, 6vw, 3rem)
+                clamp(1.5rem, 6vw, 2.5rem);
+
+            background: var(--white-glass);
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            border:
+                1px solid
+                var(--border-glass);
+
+            border-radius: 24px;
+
+            box-shadow:
+                0 24px 60px
+                rgba(0, 0, 0, 0.055);
+
+            text-align: left;
+
+            transform: translateY(30px);
+
+            opacity: 0;
+
+            animation:
+                letterAppear 1s
+                cubic-bezier(0.25, 1, 0.5, 1)
+                forwards 0.35s;
+        }
+
+
+        /* ADORNO */
+
+        .letter-decoration {
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            gap: 10px;
+
+            margin-bottom: 1.3rem;
+
+            color: var(--gold-dark);
+
+            font-size: 0.8rem;
+
+            letter-spacing: 5px;
+        }
+
+        .letter-decoration::before,
+        .letter-decoration::after {
+            content: "";
+
+            width: 35px;
+            height: 1px;
+
+            background:
+                rgba(212, 175, 55, 0.35);
+        }
+
+
+        /* TÍTULO */
+
+        .letter-title {
+            font-family: var(--font-serif);
+
+            font-size:
+                clamp(
+                    1.9rem,
+                    7vw,
+                    2.5rem
+                );
+
+            line-height: 1.2;
+
+            color: var(--text-main);
+
+            margin-bottom: 1.7rem;
+
+            font-style: italic;
+
+            text-align: center;
+        }
+
+
+        /* TEXTO */
+
+        .letter-text {
+            font-size: 0.93rem;
+
+            font-weight: 300;
+
+            line-height: 1.9;
+
+            color: var(--text-muted);
+
+            margin-bottom: 1.25rem;
+        }
+
+        .letter-text p {
+            margin-bottom: 1.15rem;
+        }
+
+
+        /* SEPARADOR */
+
+        .letter-footer {
+            margin-top: 2.5rem;
+
+            padding-top: 1.5rem;
+
+            border-top:
+                1px solid
+                rgba(0, 0, 0, 0.06);
+
+            text-align: right;
+        }
+
+        .signature {
+            display: block;
+
+            font-family: var(--font-serif);
+
+            font-size: 1.45rem;
+
+            font-weight: 700;
+
+            color: var(--gold-dark);
+        }
+
+        .date {
+            display: block;
+
+            margin-top: 0.45rem;
+
+            font-size: 0.7rem;
+
+            color: #999;
+
+            letter-spacing: 1.5px;
+        }
+
+
+        /* BOTÓN FINAL */
+
+        .final-action {
+            text-align: center;
+
+            margin-top: 2rem;
+        }
+
+        .heart-btn {
+            background: rgba(255, 255, 255, 0.85);
+
+            color: #d86f5c;
+
+            border:
+                1px solid
+                rgba(0, 0, 0, 0.07);
+
+            box-shadow:
+                0 6px 16px
+                rgba(0, 0, 0, 0.06);
+        }
+
+        .heart-btn:hover {
+            box-shadow:
+                0 10px 22px
+                rgba(0, 0, 0, 0.08);
+        }
+
+
+        /* MENSAJE SECRETO */
+
+        .secret-message {
+            max-height: 0;
+
+            opacity: 0;
+
+            overflow: hidden;
+
+            transform:
+                translateY(10px)
+                scale(0.97);
+
+            transition:
+                max-height 0.8s ease,
+                opacity 0.7s ease,
+                transform 0.7s ease;
+
+            text-align: center;
+        }
+
+        .secret-message.show {
+            max-height: 300px;
+
+            opacity: 1;
+
+            transform:
+                translateY(0)
+                scale(1);
+
+            margin-top: 1.8rem;
+        }
+
+        .secret-message p {
+            font-family: var(--font-serif);
+
+            font-size:
+                clamp(
+                    1.15rem,
+                    5vw,
+                    1.4rem
+                );
+
+            font-style: italic;
+
+            line-height: 1.6;
+
+            color: var(--text-main);
+
+            margin-bottom: 0.8rem;
+        }
+
+
+        /* PÉTALOS Y CORAZONES */
+
+        .petal,
+        .heart {
+            position: fixed;
+
+            top: -40px;
+
+            pointer-events: none;
+
+            z-index: 100;
+        }
+
+        .petal {
+            width: 15px;
+            height: 25px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--yellow-petal),
+                    var(--orange-petal)
+                );
+
+            border-radius:
+                50% 0 50% 0;
+
+            box-shadow:
+                0 4px 9px
+                rgba(0, 0, 0, 0.1);
+
+            animation:
+                fall linear forwards;
+        }
+
+        .heart {
+            color: #df7865;
+
+            font-size: 1.1rem;
+
+            animation:
+                heartFall linear forwards;
+        }
+
+
+        /* ANIMACIONES */
+
+        @keyframes introAppear {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(18px)
+                    scale(0.98);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+        }
+
+        @keyframes floatFlower {
+
+            0%,
+            100% {
+                transform:
+                    translateY(0)
+                    rotate(0deg);
+            }
+
+            50% {
+                transform:
+                    translateY(-12px)
+                    rotate(1deg);
+            }
+        }
+
+        @keyframes letterAppear {
+
+            to {
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+        @keyframes fall {
+
+            0% {
+                transform:
+                    translateY(-20px)
+                    translateX(0)
+                    rotate(0deg)
+                    scale(1);
+
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            50% {
+                transform:
+                    translateY(50vh)
+                    translateX(35px)
+                    rotate(360deg)
+                    scale(0.85);
+
+                opacity: 0.9;
+            }
+
+            100% {
+                transform:
+                    translateY(115vh)
+                    translateX(-45px)
+                    rotate(720deg)
+                    scale(0.55);
+
+                opacity: 0;
+            }
+        }
+
+        @keyframes heartFall {
+
+            0% {
+                transform:
+                    translateY(-20px)
+                    scale(0.6)
+                    rotate(-10deg);
+
+                opacity: 0;
+            }
+
+            15% {
+                opacity: 1;
+            }
+
+            50% {
+                transform:
+                    translateY(50vh)
+                    scale(1)
+                    rotate(10deg);
+
+                opacity: 0.9;
+            }
+
+            100% {
+                transform:
+                    translateY(115vh)
+                    scale(0.7)
+                    rotate(-15deg);
+
+                opacity: 0;
+            }
+        }
+
+
+        /* RESPONSIVE */
+
+        @media (max-width: 400px) {
+
+            .screen {
+                padding-left: 1.25rem;
+                padding-right: 1.25rem;
+            }
+
+            .letter-card {
+                padding:
+                    1.8rem
+                    1.35rem;
+            }
+
+            .letter-text {
+                font-size: 0.88rem;
+
+                line-height: 1.8;
+            }
+
+            .letter-footer {
+                margin-top: 2rem;
+            }
+
+            .svg-flower-main {
+                width: 95px;
+                height: 95px;
+
+                margin-bottom: 1.5rem;
+            }
+        }
+
+
+        /* PANTALLAS MUY PEQUEÑAS */
+
+        @media (max-height: 650px) {
+
+            .svg-flower-main {
+                width: 80px;
+                height: 80px;
+
+                margin-bottom: 1rem;
+            }
+
+            .title {
+                font-size: 2.4rem;
+
+                margin-bottom: 0.7rem;
+            }
+
+            .subtitle {
+                margin-bottom: 1.5rem;
+            }
+        }
+
+
+        /* REDUCCIÓN DE MOVIMIENTO */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         PANTALLA 1
+    ========================================================= -->
+
+    <main
+        id="screen-1"
+        class="screen"
+        aria-label="Página de inicio"
+    >
+
+        <div class="intro-container">
+
+            <!-- GIRASOL SVG -->
+
+            <svg
+                class="svg-flower-main"
+                viewBox="0 0 100 120"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+            >
+
+                <defs>
+
+                    <linearGradient
+                        id="petalGrad"
+                        x1="0%"
+                        y1="0%"
+                        x2="100%"
+                        y2="100%"
+                    >
+
+                        <stop
+                            offset="0%"
+                            stop-color="#FFD700"
+                        />
+
+                        <stop
+                            offset="100%"
+                            stop-color="#FFA500"
+                        />
+
+                    </linearGradient>
+
+                </defs>
+
+
+                <!-- Tallo -->
+
+                <path
+                    d="M50 55 Q46 85 55 115"
+                    stroke="#688E5A"
+                    stroke-width="4"
+                    fill="none"
+                    stroke-linecap="round"
+                />
+
+
+                <!-- Hoja -->
+
+                <path
+                    d="M51 86 Q30 76 22 88 Q37 101 53 92"
+                    fill="#688E5A"
+                />
+
+
+                <!-- Pétalos -->
+
+                <g
+                    fill="url(#petalGrad)"
+                    transform="translate(50 45)"
+                >
+
+                    <ellipse
+                        rx="11"
+                        ry="25"
+                        transform="rotate(0)"
+                    />
+
+                    <ellipse
+                        rx="11"
+                        ry="25"
+                        transform="rotate(45)"
+                    />
+
+                    <ellipse
+                        rx="11"
+                        ry="25"
+                        transform="rotate(90)"
+                    />
+
+                    <ellipse
+                        rx="11"
+                        ry="25"
+                        transform="rotate(135)"
+                    />
+
+                    <ellipse
+                        rx="11"
+                        ry="25"
+                        transform="rotate(180)"
+                    />
+
+                    <ellipse
+                        rx="11"
+                        ry="25"
+                        transform="rotate(225)"
+                    />
+
+                    <ellipse
+                        rx="11"
+                        ry="25"
+                        transform="rotate(270)"
+                    />
+
+                    <ellipse
+                        rx="11"
+                        ry="25"
+                        transform="rotate(315)"
+                    />
+
+                </g>
+
+
+                <!-- Centro -->
+
+                <circle
+                    cx="50"
+                    cy="45"
+                    r="15"
+                    fill="#5B3A20"
+                />
+
+                <circle
+                    cx="45"
+                    cy="40"
+                    r="2"
+                    fill="#8B5A2B"
+                />
+
+                <circle
+                    cx="54"
+                    cy="49"
+                    r="2"
+                    fill="#8B5A2B"
+                />
+
+                <circle
+                    cx="57"
+                    cy="39"
+                    r="1.7"
+                    fill="#8B5A2B"
+                />
+
+                <circle
+                    cx="43"
+                    cy="50"
+                    r="1.5"
+                    fill="#8B5A2B"
+                />
+
+            </svg>
+
+
+            <h1 class="title">
+                Para mi Arancita hermosa
+            </h1>
+
+
+            <p class="subtitle">
+                He preparado un pekeño detallito para ti.<br>
+                Solo tu puedes abrirlo
+            </p>
+
+
+            <button
+                class="btn"
+                onclick="openLetter()"
+            >
+                abreme bapa 🌻
+            </button>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================================================
+         PANTALLA 2
+    ========================================================= -->
+
+    <section
+        id="screen-2"
+        class="screen hidden"
+        aria-label="Carta para Ara"
+    >
+
+        <article class="letter-card">
+
+
+            <div class="letter-decoration">
+                ✦
+            </div>
+
+
+            <h2 class="letter-title">
+                Feliz 21 de septiembre
+            </h2>
+
+
+            <div class="letter-text">
+
+                <p>
+                        
+    C khe hoy es una fecha
+donde regalar florecitas amarillas tiene un
+significado muy especial.
+</p>
+
+<p>
+                  Y aunque no puedo
+llegar hasta tu puerta con un ramo
+                   entre mis manos, no
+quería que terminaras el día sin
+                  recibir algo hermoso
+como tú
+</p>
+
+<p>
+                  Me tardé tantito
+haciendo esto, cómo dos horas, pero
+                   siempre pensando en ti,
+pss pk te lo mereces, no son
+                   físicas pero cada línea
+de código y cada pétalo que cae
+                   llevan la misma
+intención.
+</p>
+
+<p>
+                  Ojalá algún día pueda
+ver tu reacción entregándote
+                   unas de verdad.
+</p>
+
+<p>
+                  Mientras tanto,
+esperooo khee este regalitoo te haga
+                   sonreír.
+</p>
+
+<!-- Fragmento de código[span_1](start_span)[span_1](end_span) -->
+</div>
+
+<!-- FIRMA -->
+
+<div class="letter-footer">
+
+    <span class="signature">
+        Te amo Ara ❤️
+    </span>
+
+    <span class="date">
+        21 DE SEPTIEMBRE DE
+2026
+    </span>
+
+</div>
+
+<!-- BOTÓN PARA DESCUBRIR EL
+MENSAJE -->
+
+<div class="final-action">
+
+    <button
+        class="btn heart-btn"
+        onclick="showSecret()"
+    >
+        Picale otra vez pq
+falta algo 👀
+    </button>
+
+</div>
+
+<!-- MENSAJE SECRETO -->
+
+<div
+    id="secret-message"
+    class="secret-message"
+>
+
+<!-- Fragmento de código[span_2](start_span)[span_2](end_span) -->
+    <p>
+                  Nunca olvides que te
+amo tanto como desde el primer día,
+                   algún día estaremos
+juntos para la eternidad.
+    </p>
+
+    <p>
+                  Hasta entonces, guarda
+este detallito. 🌻
+    </p>
+
+</div>
+
+</article>
+
+</section>
+
+<script>
+/*
+==================================================
+==============
+          CAMBIAR DE PANTALLA
+==================================================
+============== */
+
+function openLetter() {
+
+    const screen1 =
+document.getElementById("screen-1");
+
+    const screen2 =
+document.getElementById("screen-2");
+
+<!-- Fragmento de código[span_3](start_span)[span_3](end_span) -->
+screen1.classList.add("hidden");
+
+    setTimeout(() => {
+        screen2.classList.remove("hidden");
+                  createPetals();
+        }, 450);
+}
+
+/*
+==================================================
+==============
+      MENSAJE SECRETO
+==================================================
+============== */
+
+function showSecret() {
+    const secret =
+document.getElementById("secret-message");
+
+<!-- Fragmento de código[span_4](start_span)[span_4](end_span) -->
+secret.classList.toggle("show");
+
+    if (secret.classList.contains("show")) {
+                  createHearts();
+        }
+}
+
+/*
+==================================================
+==============
+      CREAR PÉTALOS
+==================================================
+============== */
+
+function createPetals() {
+    const amount = 28;
+
+    for (let i = 0; i < amount; i++) {
+                  setTimeout(() => {
+        const petal =
+document.createElement("div");
+
+<!-- Fragmento de código[span_5](start_span)[span_5](end_span) -->
+    petal.className =
+"petal";
+
+    petal.style.left =
+              Math.random() * 100
++ "vw";
+
+petal.style.animationDuration =
+                                (4 + Math.random()
+* 5) + "s";
+
+petal.style.animationDelay =
+                                (Math.random() * 2)
++ "s";
+
+    petal.style.transform =
+              `rotate(${Math.random() * 360}deg)`;
+
+document.body.appendChild(petal);
+
+                  setTimeout(() => {
+                      petal.remove();
+        }, 10000);
+        }, i * 130);
+    }
+}
+
+<!-- Fragmento de código[span_6](start_span)[span_6](end_span) -->
+/*
+==================================================
+==============
+      CREAR CORAZONES
+==================================================
+============== */
+
+function createHearts() {
+    const amount = 12;
+
+    for (let i = 0; i < amount; i++) {
+                  setTimeout(() => {
+        const heart =
+document.createElement("div");
+
+    heart.className =
+"heart";
+
+    heart.textContent =
+"❤️";
+
+    heart.style.left =
+              Math.random() * 100
++ "vw";
+
+<!-- Fragmento de código[span_7](start_span)[span_7](end_span) -->
+heart.style.animationDuration =
+                                (4 + Math.random()
+* 3) + "s";
+
+document.body.appendChild(heart);
+
+                  setTimeout(() => {
+                      heart.remove();
+        }, 8000);
+        }, i * 180);
+    }
+}
+
+</script>
+
+</body>
+</html>
